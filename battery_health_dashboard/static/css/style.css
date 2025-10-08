@@ -1,0 +1,244 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f7f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+.dashboard {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e1e4e8;
+}
+
+h1 {
+    color: #2c3e50;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card h2 {
+    margin-bottom: 15px;
+    color: #2c3e50;
+    font-size: 1.2rem;
+}
+
+.health-overview {
+    grid-column: 1;
+}
+
+.energy-consumption {
+    grid-column: 2;
+}
+
+.power-activity {
+    grid-column: 1;
+}
+
+.component-usage {
+    grid-column: 2;
+}
+
+.hourly-consumption {
+    grid-column: 1 / span 2;
+}
+
+.sensor-readings {
+    grid-column: 1 / span 2;
+}
+
+.health-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.health-circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: conic-gradient(#4CAF50 0% var(--health-percent, 100%), #e0e0e0 var(--health-percent, 100%) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.health-circle::before {
+    content: '';
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: white;
+}
+
+.health-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #2c3e50;
+    z-index: 1;
+}
+
+.health-label {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+    z-index: 1;
+}
+
+.health-details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.health-stat {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 12px;
+    background: #f8f9fa;
+    border-radius: 5px;
+}
+
+.health-stat .label {
+    color: #7f8c8d;
+}
+
+.health-stat .value {
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.energy-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.energy-stat {
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.energy-stat.highlight {
+    background: #e3f2fd;
+    border: 1px solid #bbdefb;
+}
+
+.energy-stat .label {
+    display: block;
+    font-size: 0.9rem;
+    color: #7f8c8d;
+    margin-bottom: 5px;
+}
+
+.energy-stat .value {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.power-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.current-power, .peak-power {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.sensor-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.sensor {
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.sensor .label {
+    display: block;
+    font-size: 0.9rem;
+    color: #7f8c8d;
+    margin-bottom: 5px;
+}
+
+.sensor .value {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+@media (max-width: 1024px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .health-overview,
+    .energy-consumption,
+    .power-activity,
+    .component-usage,
+    .hourly-consumption,
+    .sensor-readings {
+        grid-column: 1;
+    }
+    
+    .sensor-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .health-content {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .energy-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .sensor-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Battery Health Monitoring</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard">
+        <header>
+            <h1>Smart Battery Health Monitoring</h1>
+            <div class="last-update">Last updated: <span id="update-time">--:--:--</span></div>
+        </header>
+
+        <div class="dashboard-grid">
+            <!-- Battery Health Overview -->
+            <div class="card health-overview">
+                <h2>Battery Health Overview</h2>
+                <div class="health-content">
+                    <div class="health-circle">
+                        <div class="health-value" id="health-value">100%</div>
+                        <div class="health-label">State of Health</div>
+                    </div>
+                    <div class="health-details">
+                        <div class="health-stat">
+                            <span class="label">Remaining Distance:</span>
+                            <span class="value" id="remaining-distance">-- km</span>
+                        </div>
+                        <div class="health-stat">
+                            <span class="label">Temperature:</span>
+                            <span class="value" id="temperature">-- °C</span>
+                        </div>
+                        <div class="health-stat">
+                            <span class="label">State of Charge:</span>
+                            <span class="value" id="soc">--%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Energy Consumption -->
+            <div class="card energy-consumption">
+                <h2>Energy Consumption</h2>
+                <div class="energy-content">
+                    <div class="energy-stats">
+                        <div class="energy-stat">
+                            <span class="label">Current Rate</span>
+                            <span class="value" id="current-rate">₹1.07 now</span>
+                        </div>
+                        <div class="energy-stat">
+                            <span class="label">Total Used</span>
+                            <span class="value" id="total-used">-- kWh</span>
+                        </div>
+                        <div class="energy-stat">
+                            <span class="label">Rate per kWh</span>
+                            <span class="value" id="rate-per-kwh">₹0.125</span>
+                        </div>
+                        <div class="energy-stat highlight">
+                            <span class="label">Est. daily cost</span>
+                            <span class="value" id="daily-cost">₹--</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Power System Activity -->
+            <div class="card power-activity">
+                <h2>Power System Activity</h2>
+                <div class="power-content">
+                    <div class="current-power">
+                        <span class="label">Current:</span>
+                        <span class="value" id="current-power">-- kW</span>
+                    </div>
+                    <div class="peak-power">
+                        <span class="label">Peak:</span>
+                        <span class="value" id="peak-power">-- kW</span>
+                    </div>
+                    <canvas id="power-chart" height="120"></canvas>
+                </div>
+            </div>
+
+            <!-- Component Usage -->
+            <div class="card component-usage">
+                <h2>Component Energy Usage</h2>
+                <canvas id="component-chart"></canvas>
+            </div>
+
+            <!-- Hourly Consumption -->
+            <div class="card hourly-consumption">
+                <h2>Hourly Energy Consumption</h2>
+                <canvas id="hourly-chart"></canvas>
+            </div>
+
+            <!-- Sensor Readings -->
+            <div class="card sensor-readings">
+                <h2>Sensor Readings</h2>
+                <div class="sensor-grid">
+                    <div class="sensor">
+                        <span class="label">Inclination</span>
+                        <span class="value" id="inclination">--°</span>
+                    </div>
+                    <div class="sensor">
+                        <span class="label">Load</span>
+                        <span class="value" id="load">-- kg</span>
+                    </div>
+                    <div class="sensor">
+                        <span class="label">Jerk</span>
+                        <span class="value" id="jerk">-- m/s³</span>
+                    </div>
+                    <div class="sensor">
+                        <span class="label">C-Rate</span>
+                        <span class="value" id="c-rate">-- C</span>
+                    </div>
+                    <div class="sensor">
+                        <span class="label">Voltage</span>
+                        <span class="value" id="voltage">-- V</span>
+                    </div>
+                    <div class="sensor">
+                        <span class="label">Current</span>
+                        <span class="value" id="current">-- A</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
